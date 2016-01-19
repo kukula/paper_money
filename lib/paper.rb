@@ -2,6 +2,8 @@ require "paper/version"
 require "paper/money"
 
 module Paper
+  class NoCurrencyRate < RuntimeError; end
+
   def self.configure(base_currency, conversion_rates = {})
     @base_currency, @conversion_rates = base_currency, conversion_rates
   end
