@@ -1,6 +1,9 @@
 require "spec_helper"
 
 describe Paper::Money do
+  let(:fifty_eur) { Paper::Money.new(50, 'EUR') }
+  let(:twenty_dollars) { Paper::Money.new(20, 'USD') }
+
   around do |example|
     Paper.configure("EUR", { "USD" => 1.11 })
     example.run
@@ -24,6 +27,12 @@ describe Paper::Money do
 
     it "raises error if currncy is not listed in conversion rates" do
       expect { Paper::Money.new(55.5, "USD").convert_to("XXX").inspect }.to raise_error(Paper::NoCurrencyRate)
+    end
+  end
+
+  describe "#+" do
+    it "returns new money object with sum of two money objects" do
+      expect((fifty_eur + twenty_dollars).inspect).to eq("68.02 EUR")
     end
   end
 end

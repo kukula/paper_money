@@ -17,6 +17,12 @@ module Paper
       Money.new(converted_amount(new_currency), new_currency)
     end
 
+    def +(money)
+      converted_amount = money.convert_to(currency).amount
+      new_amount = converted_amount + amount
+      Money.new(new_amount, currency)
+    end
+
     private
 
     def converted_amount(new_currency)
