@@ -30,26 +30,20 @@ describe Paper::Money do
     end
   end
 
-  describe "#+" do
-    it "returns new money object with addition of two money objects" do
+  describe "arithmetics" do
+    specify "+" do
       expect((fifty_eur + twenty_dollars).inspect).to eq("68.02 EUR")
     end
-  end
 
-  describe "#-" do
-    it "returns new money object with subtraction of two money objects" do
+    specify "-" do
       expect((fifty_eur - twenty_dollars).inspect).to eq("31.98 EUR")
     end
-  end
 
-  describe "#*" do
-    it "returns new money object with multiplied amount" do
+    specify "*" do
       expect((twenty_dollars * 3).inspect).to eq("60.00 USD")
     end
-  end
 
-  describe "#/" do
-    it "returns new money object with multiplied amount" do
+    specify "/" do
       expect((fifty_eur / 2).inspect).to eq("25.00 EUR")
     end
   end
