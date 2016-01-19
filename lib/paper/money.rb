@@ -25,6 +25,14 @@ module Paper
       sum(money, &:-)
     end
 
+    def *(multiplicator)
+      Money.new(amount * multiplicator, currency)
+    end
+
+    def /(multiplicator)
+      Money.new(amount / multiplicator, currency)
+    end
+
     private
 
     def converted_amount(new_currency)
