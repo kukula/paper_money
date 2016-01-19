@@ -1,4 +1,5 @@
 require "paper/version"
+require "paper/money"
 
 module Paper
   def self.configure(base_currency, conversion_rates = {})
