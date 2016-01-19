@@ -18,9 +18,11 @@ module Paper
     end
 
     def +(money)
-      converted_amount = money.convert_to(currency).amount
-      new_amount = converted_amount + amount
-      Money.new(new_amount, currency)
+      sum(money, &:+)
+    end
+
+    def -(money)
+      sum(money, &:-)
     end
 
     private
@@ -35,6 +37,12 @@ module Paper
 
     def valid_currency?(currency)
       Paper.conversion_rates.has_key?(currency) || Paper.base_currency == currency
+    end
+
+    def sum(money)
+      converted_amount = money.convert_to(currency).amount
+      new_amount = yield(amount, converted_amount)
+      Money.new(new_amount, currency)
     end
   end
 end

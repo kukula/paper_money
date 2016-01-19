@@ -31,8 +31,14 @@ describe Paper::Money do
   end
 
   describe "#+" do
-    it "returns new money object with sum of two money objects" do
+    it "returns new money object with addition of two money objects" do
       expect((fifty_eur + twenty_dollars).inspect).to eq("68.02 EUR")
+    end
+  end
+
+  describe "#-" do
+    it "returns new money object with subtraction of two money objects" do
+      expect((fifty_eur - twenty_dollars).inspect).to eq("31.98 EUR")
     end
   end
 end
