@@ -1,5 +1,7 @@
 module Paper
   class Money
+    include Comparable
+
     attr_reader :amount, :currency
 
     def initialize(amount, currency = Paper.base_currency)
@@ -11,6 +13,7 @@ module Paper
     end
 
     def convert_to(new_currency)
+      return self if new_currency == currency
       unless valid_currency?(new_currency)
         raise NoCurrencyRate, "Currency '#{new_currency}' is not listed in conversion rates"
       end
@@ -34,6 +37,11 @@ module Paper
     end
 
     private
+
+    def <=>(money)
+      converted_amount = money.convert_to(currency).amount
+      amount <=> converted_amount
+    end
 
     def converted_amount(new_currency)
       if new_currency == Paper.base_currency
