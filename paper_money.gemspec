@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Paper::Money gem helps with money conversion, comparison and arithmetic}
   spec.description   = %q{}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/kukula/paper_money"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = "exe"

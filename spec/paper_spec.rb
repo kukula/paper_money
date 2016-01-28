@@ -29,6 +29,6 @@ describe Paper do
   end
 
   def configurate_base_and_rates
-    Paper.configure("UAH", { "USD" => 4.2 })
+    Paper.configure(base_currency: "UAH", conversion_rates: { "USD" => 4.2 })
   end
 end

@@ -5,10 +5,13 @@ Paper::Money gem helps with money conversion, comparison and arithmetic
 ```ruby
 # Configure the currency rates with respect to a base currency (here EUR):
 
-Paper::Money.configure('EUR', {
-  'USD'     => 1.11,
-  'Bitcoin' => 0.0047
-})
+Paper.configure(
+  base_currency: 'EUR',
+  conversion_rates: {
+    'USD'     => 1.11,
+    'Bitcoin' => 0.0047
+  }
+)
 
 # Instantiate money objects:
 
@@ -53,7 +56,7 @@ twenty_dollars < fifty_eur             # => true
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'paper'
+gem 'paper_money'
 ```
 
 And then execute:
@@ -76,5 +79,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/paper.
-
+Bug reports and pull requests are welcome on GitHub at https://github.com/kukula/paper_money.

@@ -5,7 +5,7 @@ describe Paper::Money do
   let(:twenty_dollars) { Paper::Money.new(20, 'USD') }
 
   around do |example|
-    Paper.configure("EUR", { "USD" => 1.11 })
+    Paper.configure(base_currency: "EUR", conversion_rates: { "USD" => 1.11 })
     example.run
     Paper.reset_configuration
   end
