@@ -10,6 +10,18 @@ describe Paper::Money do
     Paper.reset_configuration
   end
 
+  describe "#amount" do
+    it "returns amount" do
+      expect(Paper::Money.new(33.03, "EUR").amount).to eq(33.03)
+    end
+  end
+
+  describe "#cents" do
+    it "returns cents" do
+      expect(Paper::Money.new(33.03, "EUR").cents).to eq(3303)
+    end
+  end
+
   describe "#inspect" do
     it "returns amount and currency" do
       expect(Paper::Money.new(50, "EUR").inspect).to eq("50.00 EUR")

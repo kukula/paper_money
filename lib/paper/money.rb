@@ -2,10 +2,15 @@ module Paper
   class Money
     include Comparable
 
-    attr_reader :amount, :currency
+    attr_reader :cents, :currency
 
     def initialize(amount, currency = Paper.base_currency)
-      @amount, @currency = amount, currency
+      @cents = amount * 100
+      @currency = currency
+    end
+
+    def amount
+      cents.to_f / 100
     end
 
     def inspect
@@ -39,8 +44,8 @@ module Paper
     private
 
     def <=>(money)
-      converted_amount = money.convert_to(currency).amount
-      amount <=> converted_amount
+      converted_cents = money.convert_to(currency).cents
+      cents <=> converted_cents
     end
 
     def converted_amount(new_currency)
