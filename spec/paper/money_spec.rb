@@ -1,8 +1,8 @@
 require "spec_helper"
 
 describe Paper::Money do
-  let(:fifty_eur) { Paper::Money.new(50, 'EUR') }
-  let(:twenty_dollars) { Paper::Money.new(20, 'USD') }
+  let(:fifty_eur) { Paper::Money.new(50, "EUR") }
+  let(:twenty_dollars) { Paper::Money.new(20, "USD") }
 
   around do |example|
     Paper.configure(base_currency: "EUR", conversion_rates: { "USD" => 1.11 })
@@ -66,15 +66,15 @@ describe Paper::Money do
 
   describe "comparisons" do
     specify "==" do
-      expect(twenty_dollars == Paper::Money.new(20, 'USD')).to be_truthy
-      expect(twenty_dollars == Paper::Money.new(30, 'USD')).to be_falsey
+      expect(twenty_dollars == Paper::Money.new(20, "USD")).to be_truthy
+      expect(twenty_dollars == Paper::Money.new(30, "USD")).to be_falsey
 
-      fifty_eur_in_usd = fifty_eur.convert_to('USD')
+      fifty_eur_in_usd = fifty_eur.convert_to("USD")
       expect(fifty_eur_in_usd == fifty_eur).to be_truthy
     end
 
     specify ">" do
-      expect(twenty_dollars > Paper::Money.new(5, 'USD')).to be_truthy
+      expect(twenty_dollars > Paper::Money.new(5, "USD")).to be_truthy
     end
 
     specify "<" do
